@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ฝ่ายสวัสดิการ ศึกษาศาสตร์ มหาวิทยาลัยนเรศวร 2562</title>
+<link rel="stylesheet" href="content/main.css" />
+<link href="https://fonts.googleapis.com/css?family=Prompt:400,400i,500,500i|Sarabun:400,400i,600,600i" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC6x3egslw8y9UZVJS0gzfL7kP1xevQu4w",
+    authDomain: "nu61410198-project.firebaseapp.com",
+    databaseURL: "https://nu61410198-project.firebaseio.com",
+    projectId: "nu61410198-project",
+    storageBucket: "nu61410198-project.appspot.com",
+    messagingSenderId: "1086891836879"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+</script>
+</head>
+
+<body>
+	<div class="container" style="padding-bottom: 30px;">
+		<span id="textArea">
+			<script type="text/javascript">
+				if (localStorage.getItem("process") == "run") {
+					var showText = "<center>Please wait while we are processing your request.</center>";
+					document.getElementById('textArea').innerHTML += showText;
+					var refCount = firebase.database().ref('2019/education/event/regis1');
+					refCount.once('value', function (snap) {
+						var counter = snap.child('/member/counting').val();
+						counter = counter+1;
+						localStorage.setItem("counter",counter);
+						firebase.database().ref('2019/education/event/regis1/member').update({
+							counting: counter
+						});
+					});
+						var stuID = localStorage.getItem("stuID");
+						var name = localStorage.getItem("name");
+						var nickname = localStorage.getItem("nickname");
+						var major = localStorage.getItem("major");
+						var tel = localStorage.getItem("tel");
+						firebase.database().ref('2019/education/event/regis1/member/'+stuID).set({
+							id: stuID,
+							name: name,
+							nickname: nickname,
+							major: major,
+							tel: tel,
+							status: "registered"
+						}, function(error) {
+    						if (error) {
+    						} else {
+								showText = "<center>ลงทะเบียนเรียบร้อยแล้ว คุณลงทะเบียนเป็นลำดับที่ " + localStorage.getItem("counter") + "<br><br>ระบบจะพากลับไปยังหน้าหลักภายใน 5 วินาที</center>";
+								document.getElementById('textArea').innerHTML += showText;
+								localStorage.clear();
+								setTimeout(function(){ window.location.href= 'index.html';}, 5000);
+  							}
+						}
+					);
+			} else {
+				alert("คุณไม่ได้รับสิทธิ์ในการเข้าถึงหน้านี้");
+				window.history.back();
+			}
+		</script>
+		<!--<center>Please wait while we are processing your request.</center>
+		<center>ลงทะเบียนเรียบร้อยแล้ว คุณลงทะเบียนเป็นลำดับที่ ###<br><br>ระบบจะพากลับไปยังหน้าหลักภายใน 5 วินาที</center>-->
+		</span>
+	</div>
+	
+</body>
+</html>

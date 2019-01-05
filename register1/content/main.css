@@ -1,0 +1,164 @@
+@charset "UTF-8";
+/* CSS Document */
+
+html,body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background: url(background.jpeg) center center no-repeat no-repeat;
+	background-size: cover;
+	font-family: Sarabun;
+	font-style: normal;
+	font-size: 18px;
+}
+
+.container {
+	width: auto;
+	height: auto;
+	min-width: 50%;
+	padding: 30px;
+	padding-bottom: 20px;
+	background-color: rgba(255,255,255,0.5);
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+}
+
+.head {
+	text-align: center;
+	font-family: Prompt;
+	font-style: normal;
+	font-size: 32px;
+}
+.sub-head {
+	text-align: center;
+	font-family: Prompt;
+	font-style: normal;
+	font-size: 22px;
+}
+.content {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	text-align: center;
+}
+.footer {
+	text-align: center;
+	font-family: Prompt;
+	font-style: normal;
+	font-size: 12px;
+	color: #616161;
+}
+.footer a {
+	color: #616161;
+	text-decoration: underline;
+	transition: 0.3s;
+}
+.footer a:hover {
+	font-size: 14px;
+	transition: 0.3s;
+}
+
+form input {
+	width: 20ch;
+	text-align: center;
+	font-family: Sarabun;
+	font-size: 14px;
+	padding: 5px;
+	border: solid 1px #9E9E9E;
+	border-radius: 7px;
+	transition: 0.3s;
+}
+form input:focus {
+	font-size: 16px;
+	transition: 0.3s;
+}
+button, input[type="submit"] {
+	width: auto;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-family: Prompt;
+	font-weight: 600;
+	font-size: 14px;
+	border: solid 2px #03A9F4;
+	border-radius: 20px;
+	background-color: rgba(255,255,255,0.50);
+	color: #7E57C2;
+	cursor: pointer;
+	transition: 0.3s;
+}
+button:hover, input[type="submit"]:hover {
+	border: solid 2px #F44336;
+	color: #F44336;
+	transition: 0.3s;
+}
+
+.green {
+	color:#4CAF50;
+	border-color: #4CAF50;
+}
+.orange {
+	color:#F57F17;
+	border-color: #F57F17;
+}
+.pink {
+	color: #EC407A;
+	border-color: #EC407A;
+}
+
+.alert {
+	width: 70%;
+	padding: 5%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-top: solid 2px #F44336;
+	border-bottom: solid 2px #F44336;
+	background-color: rgba(255,255,255,0.75);
+}
+.alert span {
+	font-size: 14px;
+}
+table {
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+table td {
+	padding: 7px;
+}
+table input {
+	text-align: left;
+	background: rgba(255,255,255,0.5);
+	border: none;
+	border-bottom: solid 1px #F44336;
+}
+table input.fixed {
+	border: none;
+	text-align: left;
+	background: rgba(255,255,255,0);
+	padding: 0;
+	font-size: 16px;
+}
+input[type="submit"].modify {
+	width: auto;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-family: Prompt;
+	font-weight: 600;
+	font-size: 14px;
+	border: solid 2px #4CAF50;
+	border-radius: 20px;
+	background-color: rgba(255,255,255,0.50);
+	cursor: pointer;
+	color: #4CAF50;
+	transition: 0.3s;
+}
+input[type="submit"].modify:hover {
+	border: solid 2px #F44336;
+	color: #F44336;
+	transition: 0.3s;
+}

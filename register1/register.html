@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ฝ่ายสวัสดิการ ศึกษาศาสตร์ มหาวิทยาลัยนเรศวร 2562</title>
+<link rel="stylesheet" href="content/main.css" />
+<link href="https://fonts.googleapis.com/css?family=Prompt:400,400i,500,500i|Sarabun:400,400i,600,600i" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC6x3egslw8y9UZVJS0gzfL7kP1xevQu4w",
+    authDomain: "nu61410198-project.firebaseapp.com",
+    databaseURL: "https://nu61410198-project.firebaseio.com",
+    projectId: "nu61410198-project",
+    storageBucket: "nu61410198-project.appspot.com",
+    messagingSenderId: "1086891836879"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+</script>
+</head>
+
+<body>
+	<script type="text/javascript">
+		if (localStorage.getItem("loginStep") == "check-pass") {
+			window.location = "check.html";
+		} else if (localStorage.getItem("loginStep") == "check-fail") {
+			//do nothing
+		} else if (localStorage.getItem("loginStep") == "check-edit") {
+			window.location = "edit.html";
+		} else {
+			window.location = "index.html";
+		}
+	</script>
+	<div class="container">
+		<div class="head">ลงทะเบียนฝ่ายสวัสดิการ</div>
+		<div class="sub-head">คณะศึกษาศาสตร์ มหาวิทยาลัยนเรศวร ปีการศึกษา 2562</div>
+		<div class="content">
+			<center><div class="alert orange">ไม่พบข้อมูลในระบบ  กรุณากรอกข้อมูลเพิ่มเติม<br><span>*เมื่อกดยืนยันแล้วจะไม่สามารถแก้ไขได้*</span></div></center>
+			<form class="data" action="" onSubmit="return myForm()">
+				<span id="textArea">
+					<script type="text/javascript">
+						var showText = "<table width='100%' border='0' cellspacing='0' cellpadding='0'><tbody><tr><td width='48%' align='right'>รหัสนิสิต :</td><td width='4%'>&nbsp;</td><td width='48%' align='left'><input class='fixed' id='stuID' type='text' value='" + localStorage.getItem('stuID') + "' readonly /></td></tr><tr><td width='48%' align='right'>ชื่อ-สกุล :</td><td width='4%'>&nbsp;</td><td width='48%' align='left'><input id='name' type='text' placeholder='ex. นายสวัสดิ์ รักเรียน'' required /></td></tr><tr><td width='48%' align='right'>ชื่อเล่น :</td><td width='4%'>&nbsp;</td><td width='48%' align='left'><input id='nickname' type='text' placeholder='ex. กานต์'' required /></td></tr><tr><td width='48%' align='right'>สาขาวิชา :</td><td width='4%'>&nbsp;</td><td width='48%' align='left'><input id='major' type='text' placeholder='ex. ศึกษาศาสตร์'' required /></td></tr><tr><td width='48%' align='right'>หมายเลขโทรศัพท์ :</td><td width='4%'>&nbsp;</td><td width='48%' align='left'><input id='tel' type='tel' placeholder='ex. 091-234-5678' required /></td></tr></tbody></table>";
+						document.getElementById('textArea').innerHTML += showText;
+					</script>
+				</span>
+				<button class="orange" onClick="btnClick('cancel')">ยกเลิกการลงทะเบียน</button>&emsp;&emsp;&emsp;<input type="submit" class="modify green" value="ยืนยันการลงทะเบียน" />
+			</form>
+		</div>
+		<div class="footer">Powered by <a href="https://www.ktpstudioth.com">KTP Studio</a>.<br>©2019 by <a href="https://www.ikenzz.xyz">iKenzz</a>. All Rights Reserved.</div>
+	</div>
+	
+	<script type="text/javascript">
+		function btnClick(URLlink) {
+			if (URLlink == "cancel") {
+				localStorage.clear();
+				window.location = 'index.html';
+			}
+		}
+		function myForm() {
+			var stuID = document.getElementById('stuID').value;
+			var name = document.getElementById('name').value;
+			var nickname = document.getElementById('nickname').value;
+			var major = document.getElementById('major').value;
+			var tel = document.getElementById('tel').value;
+			localStorage.setItem("stuID",stuID);
+			localStorage.setItem("name",name);
+			localStorage.setItem("nickname",nickname);
+			localStorage.setItem("major",major);
+			localStorage.setItem("tel",tel);
+			localStorage.setItem("process","run");
+			window.location = 'process.html';
+			return false;
+		}
+	</script>
+	
+</body>
+</html>

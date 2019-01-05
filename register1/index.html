@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ฝ่ายสวัสดิการ ศึกษาศาสตร์ มหาวิทยาลัยนเรศวร 2562</title>
+<link rel="stylesheet" href="content/main.css" />
+<link href="https://fonts.googleapis.com/css?family=Prompt:400,400i,500,500i|Sarabun:400,400i,600,600i" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC6x3egslw8y9UZVJS0gzfL7kP1xevQu4w",
+    authDomain: "nu61410198-project.firebaseapp.com",
+    databaseURL: "https://nu61410198-project.firebaseio.com",
+    projectId: "nu61410198-project",
+    storageBucket: "nu61410198-project.appspot.com",
+    messagingSenderId: "1086891836879"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+</script>
+</head>
+
+<body>
+	<script type="text/javascript">
+		if (localStorage.getItem("loginStep") == "login") {
+			window.location = "check.html";
+		} else if (localStorage.getItem("loginStep") == "check-pass") {
+			//do nothing
+		} else if (localStorage.getItem("loginStep") == "check-fail") {
+			window.location = "register.html";
+		} else if (localStorage.getItem("loginStep") == "check-edit") {
+			window.location = "edit.html";
+		} else {
+			//do nothing
+		}
+	</script>
+	<div class="container">
+		<div class="head">ยินดีต้อนรับสู่การลงทะเบียนฝ่ายสวัสดิการ</div>
+		<div class="sub-head">คณะศึกษาศาสตร์ มหาวิทยาลัยนเรศวร ปีการศึกษา 2562</div>
+		<div class="content">
+			<form action="" onSubmit="return myForm()">
+				<input type="text" id="stuID" required placeholder="กรุณากรอกรหัสนิสิต" /><br><br>
+				<input type="submit" value="ตรวจสอบข้อมูล" />
+			</form>
+		</div>
+		<div class="footer">Powered by <a href="https://www.ktpstudioth.com">KTP Studio</a>.<br>©2019 by <a href="https://www.ikenzz.xyz">iKenzz</a>. All Rights Reserved.</div>
+	</div>
+	
+	<script type="text/javascript">
+		function myForm() {
+			var stuID = document.getElementById('stuID').value;
+			var myRef = firebase.database().ref('2019/education/event/regis1/member/'+stuID);
+			myRef.on('value', function (snap) {
+				var checker = snap.child('/id').val();
+				if (checker == stuID) {
+					var activate = snap.child('/status').val();
+					if (activate == "registered") {
+						alert("คุณได้ทำการลงทะเบียนเรียบร้อยแล้ว");
+						window.location = 'index.html';
+					} else {
+						stuID = snap.child('/id').val();
+						var name = snap.child('/name').val();
+						var nickname = snap.child('/nickname').val();
+						var major = snap.child('/major').val();
+						var tel = snap.child('/tel').val();
+						localStorage.setItem("loginStep","check-pass");
+						localStorage.setItem("stuID",stuID);
+						localStorage.setItem("name",name);
+						localStorage.setItem("nickname",nickname);
+						localStorage.setItem("major",major);
+						localStorage.setItem("tel",tel);
+						window.location = 'check.html';
+					}
+				} else {
+					localStorage.setItem("loginStep","check-fail");
+					localStorage.setItem("stuID",stuID);
+					window.location = 'register.html';
+				}
+				
+			});	
+			return false;
+		}
+	</script>
+	
+</body>
+</html>
