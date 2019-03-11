@@ -20,7 +20,7 @@ html,body {
 	padding: 0;
 	background: url(background.jpeg) center center no-repeat no-repeat;
 	background-size: cover;
-	position: fixed;
+	position: relative;
 }
 
 .container {
