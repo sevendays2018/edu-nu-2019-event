@@ -13,6 +13,10 @@ html,body {
 	font-size: 18px;
 }
 
+.reportData .container {
+	position: relative;
+}
+
 .container {
 	width: auto;
 	height: auto;
