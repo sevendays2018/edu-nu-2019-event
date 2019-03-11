@@ -13,27 +13,6 @@ html,body {
 	font-size: 18px;
 }
 
-.reportData {
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	background: url(background.jpeg) center center no-repeat no-repeat;
-	background-size: cover;
-	position: fixed;
-}
-
-.reportData .container {
-	width: auto;
-	height: auto;
-	min-width: 50%;
-	padding: 30px;
-	padding-bottom: 20px;
-	background-color: rgba(255,255,255,0.5);
-	position: absolute;
-	top: 0;
-}
-
 .container2 {
 	width: auto;
 	height: auto;
@@ -182,4 +161,26 @@ input[type="submit"].modify:hover {
 	border: solid 2px #F44336;
 	color: #F44336;
 	transition: 0.3s;
+}
+ 
+/* REPORT PAGE */
+.reportData-background {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background: url(background.jpeg) center center no-repeat no-repeat;
+	background-size: cover;
+	position: fixed;
+}
+
+.reportData-container {
+	width: auto;
+	height: auto;
+	min-width: 50%;
+	padding: 30px;
+	padding-bottom: 20px;
+	background-color: rgba(255,255,255,0.5);
+	position: absolute;
+	top: 0;
 }
