@@ -211,6 +211,6 @@ input[type="submit"].modify:hover {
 .reportData table .tableHead {
 	font-size: 18px;
 	font-weight: 600;
-	background: #616161;
+	background: rgba(0,0,0,0.65);
 	color: #ffffff;
 }
