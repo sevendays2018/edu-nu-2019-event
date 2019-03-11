@@ -57,7 +57,7 @@ document.getElementById("displayDate").innerHTML = "*"+displayDate+"*";</script>
 			        			var ref1 = firebase.database().ref('2019/education/event/regis1/member/');
 			        			var ref2 = firebase.database().ref('2019/education/event/regis1/member/counting');
 							ref2.on('value', function (snap) {
-                						document.getElementById('textArea').innerHTML = "<tr class='tableHead'><td width='15%'>รหัสนิสิต</td><td width='35%'>ชื่อ-สกุล</td><td width='25%'>ชื่อเล่น</td><td width='25%'>สาขาวิชา</td></tr>";
+                						document.getElementById('textArea').innerHTML = "<tr><td class='tableHead' width='15%'>รหัสนิสิต</td><td class='tableHead' width='35%'>ชื่อ-สกุล</td><td class='tableHead' width='25%'>ชื่อเล่น</td><td class='tableHead' width='25%'>สาขาวิชา</td></tr>";
                 						ref1.orderByChild('id').on('child_added', function (snap) {
                  							var refID = snap.child('/id').val();
                   							var refName = snap.child('/name').val();
