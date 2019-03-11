@@ -63,7 +63,8 @@ document.getElementById("displayDate").innerHTML = "*"+displayDate+"*";</script>
                   							var refName = snap.child('/name').val();
                   							var refNickname = snap.child('/nickname').val();
                   							var refMajor = snap.child('/major').val();
-                 							if (refID != null) {
+									var refStatus = snap.child('/status').val();
+                 							if (refID != null && refStatus == "registered") {
                     								var showData = "<tr><td width='15%'>" + refID + "</td><td width='35%'>" + refName + "</td><td width='25%'>" + refNickname + "</td><td width='25%'>" + refMajor + "</td></tr>";
                     								document.getElementById('textArea').innerHTML += showData;
                   							}
