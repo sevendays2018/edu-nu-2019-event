@@ -14,11 +14,13 @@ html,body {
 }
 
 .reportData {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	background: url(background.jpeg) center center no-repeat no-repeat;
+	background-size: cover;
 	position: fixed;
-}
-
-.reportData .container {
-	position: relative;
 }
 
 .container {
