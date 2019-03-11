@@ -35,48 +35,48 @@
 </script>
 </head>
 
-<body>
+<body class="reportData">
 
 	<script type="text/javascript">
 		localStorage.clear();
 	</script>
 	
 	<div class="reportData-background"></div>
-	<div class="reportData">
-	<div class="container">
-		<div class="head">รายชื่อนิสิตที่ลงทะเบียนฝ่ายสวัสดิการ</div>
-		<div class="sub-head">คณะศึกษาศาสตร์ มหาวิทยาลัยนเรศวร ปีการศึกษา 2562</div>
-		<div class="content">
-			<center><div class="alert green">อัปเดตข้อมูลล่าสุด<br><span id="displayDate"><script type="text/javascript">var displayDate = new Date();
+	<div class="reportData-content">
+		<div class="container">
+			<div class="head">รายชื่อนิสิตที่ลงทะเบียนฝ่ายสวัสดิการ</div>
+			<div class="sub-head">คณะศึกษาศาสตร์ มหาวิทยาลัยนเรศวร ปีการศึกษา 2562</div>
+			<div class="content">
+				<center><div class="alert green">อัปเดตข้อมูลล่าสุด<br><span id="displayDate"><script type="text/javascript">var displayDate = new Date();
 document.getElementById("displayDate").innerHTML = "*"+displayDate+"*";</script></span></div></center>
 
-			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-  				<tbody id="textArea">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  					<tbody id="textArea">
           
-            				<script>		
-			        		var ref1 = firebase.database().ref('2019/education/event/regis1/member/');
-			        		var ref2 = firebase.database().ref('2019/education/event/regis1/member/counting');
-						ref2.on('value', function (snap) {
-                					document.getElementById('textArea').innerHTML = "<tr class='tableHead'><td width='15%'>รหัสนิสิต</td><td width='35%'>ชื่อ-สกุล</td><td width='25%'>ชื่อเล่น</td><td width='25%'>สาขาวิชา</td></tr>";
-                					ref1.orderByChild('id').on('child_added', function (snap) {
-                 						var refID = snap.child('/id').val();
-                  						var refName = snap.child('/name').val();
-                  						var refNickname = snap.child('/nickname').val();
-                  						var refMajor = snap.child('/major').val();
-                 						if (refID != null) {
-                    							var showData = "<tr><td width='15%'>" + refID + "</td><td width='35%'>" + refName + "</td><td width='25%'>" + refNickname + "</td><td width='25%'>" + refMajor + "</td></tr>";
-                    							document.getElementById('textArea').innerHTML += showData;
-                  						}
-                					});
-			        		});
-            				</script>
+            					<script>		
+			        			var ref1 = firebase.database().ref('2019/education/event/regis1/member/');
+			        			var ref2 = firebase.database().ref('2019/education/event/regis1/member/counting');
+							ref2.on('value', function (snap) {
+                						document.getElementById('textArea').innerHTML = "<tr class='tableHead'><td width='15%'>รหัสนิสิต</td><td width='35%'>ชื่อ-สกุล</td><td width='25%'>ชื่อเล่น</td><td width='25%'>สาขาวิชา</td></tr>";
+                						ref1.orderByChild('id').on('child_added', function (snap) {
+                 							var refID = snap.child('/id').val();
+                  							var refName = snap.child('/name').val();
+                  							var refNickname = snap.child('/nickname').val();
+                  							var refMajor = snap.child('/major').val();
+                 							if (refID != null) {
+                    								var showData = "<tr><td width='15%'>" + refID + "</td><td width='35%'>" + refName + "</td><td width='25%'>" + refNickname + "</td><td width='25%'>" + refMajor + "</td></tr>";
+                    								document.getElementById('textArea').innerHTML += showData;
+                  							}
+                						});
+			        			});
+            					</script>
             
-  				</tbody>
-			</table>
+  					</tbody>
+				</table>
 
+			</div>
+			<div class="footer">Powered by <a href="https://www.ktpstudioth.com">KTP Studio</a>.<br>©2019 by <a href="https://www.ikenzz.xyz">iKenzz</a>. All Rights Reserved.</div>
 		</div>
-		<div class="footer">Powered by <a href="https://www.ktpstudioth.com">KTP Studio</a>.<br>©2019 by <a href="https://www.ikenzz.xyz">iKenzz</a>. All Rights Reserved.</div>
-	</div>
 	</div>
 	
 	<script type="text/javascript">
