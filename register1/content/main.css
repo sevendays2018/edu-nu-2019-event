@@ -198,8 +198,6 @@ input[type="submit"].modify:hover {
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%);
-	margin-top: 10%;
-	margin-bottom: 10%;
-	margin-left: 0;
-	margin-right: 0;
+	top: 10%;
+	bottom: 10%;
 }
