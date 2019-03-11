@@ -207,3 +207,8 @@ input[type="submit"].modify:hover {
 .reportData table {
 	font-size: 16px;
 }
+
+.reportData table .head {
+	font-size: 18px;
+	background: rgba(0,0,0,0.1);
+}
