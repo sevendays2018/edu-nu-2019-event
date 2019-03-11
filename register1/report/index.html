@@ -75,14 +75,49 @@ document.getElementById("displayDate").innerHTML = "*"+displayDate+"*";</script>
   					</tbody>
 				</table>
 
+				<center><div class="alert orange">หากไม่พบข้อมูลของคุณ กรุณากรอกรหัสนิสิตและทำการตรวจสอบข้อมูลในระบบ<br><span>*หากต้องการแก้ไขข้อมูล กรุณาติดต่อผู้ดูแลระบบ*</span></div></center>
+				<form action="" onSubmit="return myForm()">
+					<input type="text" id="stuID" required placeholder="กรุณากรอกรหัสนิสิต" /><br><br>
+					<input type="submit" value="ตรวจสอบข้อมูล" />
+				</form>
 			</div>
 			<div class="footer">Powered by <a href="https://www.ktpstudioth.com">KTP Studio</a>.<br>©2019 by <a href="https://www.ikenzz.xyz">iKenzz</a>. All Rights Reserved.</div>
 		</div>
 	</div>
 	
 	<script type="text/javascript">
-		function btnClick(URLlink) {
-      ///
+		function myForm() {
+			var stuID = document.getElementById('stuID').value;
+			var myRef = firebase.database().ref('2019/education/event/regis1/member/'+stuID);
+			myRef.on('value', function (snap) {
+				var checker = snap.child('/id').val();
+				if (checker == stuID) {
+					var activate = snap.child('/status').val();
+					if (activate == "registered") {
+						alert("คุณได้ทำการลงทะเบียนเรียบร้อยแล้ว");
+						window.location = 'index.html';
+					} else {
+						stuID = snap.child('/id').val();
+						var name = snap.child('/name').val();
+						var nickname = snap.child('/nickname').val();
+						var major = snap.child('/major').val();
+						var tel = snap.child('/tel').val();
+						localStorage.setItem("loginStep","check-pass");
+						localStorage.setItem("stuID",stuID);
+						localStorage.setItem("name",name);
+						localStorage.setItem("nickname",nickname);
+						localStorage.setItem("major",major);
+						localStorage.setItem("tel",tel);
+						window.location = 'check.html';
+					}
+				} else {
+					localStorage.setItem("loginStep","check-fail");
+					localStorage.setItem("stuID",stuID);
+					window.location = 'register.html';
+				}
+				
+			});	
+			return false;
 		}
 	</script>
 	
