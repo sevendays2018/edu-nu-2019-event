@@ -181,12 +181,9 @@ input[type="submit"].modify:hover {
 
 .reportData-content {
 	width: 100%;
-	height: 80%;
+	height: 100%;
 	margin: 0;
-	padding-top: 10%;
-	padding-bottom: 10%;
-	padding-left: 0;
-	padding-right: 0;
+	padding: 0;
 	position: relative;
 	z-index: 2;
 }
@@ -201,4 +198,5 @@ input[type="submit"].modify:hover {
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%);
+	margin-top: 10%;
 }
