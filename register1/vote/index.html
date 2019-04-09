@@ -1,1 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ฝ่ายสวัสดิการ ศึกษาศาสตร์ มหาวิทยาลัยนเรศวร 2562</title>
+<meta name="author" content="iKenzz">
+<meta name="description" content="ฝ่ายสวัสดิการ คณะศึกษาศาสตร์ มหาวิทยาลัยนเรศวร ปีการศึกษา 2562"/>
+<link rel="shortcut icon" type="content/image/x-icon" href="content/favicon.ico">
+<link rel="shortcut icon" type="content/image/png" href="content/favicon.png">
+<!-- Facebook -->
+<meta property="og:title" content="ฝ่ายสวัสดิการ ศึกษาศาสตร์ มหาวิทยาลัยนเรศวร 2562" />
+<meta property="og:url" content="https://sevendays2018.github.io/edu-nu-2019-event/" />
+<meta property="og:site_name" content="ฝ่ายสวัสดิการ ศึกษาศาสตร์ มหาวิทยาลัยนเรศวร 2562"/>
+<meta property="og:description" content="ฝ่ายสวัสดิการ คณะศึกษาศาสตร์ มหาวิทยาลัยนเรศวร ปีการศึกษา 2562" />
+<meta property="article:author" content="iKenzz" />
+<meta property="article:publisher" content="https://www.facebook.com/groups/227791388117273/" />
+<meta property="og:image" content="https://sevendays2018.github.io/edu-nu-2019-event/register1/content/og-image.jpg" />
 
+<link rel="stylesheet" href="content/main.css" />
+<link href="https://fonts.googleapis.com/css?family=Prompt:400,400i,500,500i|Sarabun:400,400i,600,600i" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC6x3egslw8y9UZVJS0gzfL7kP1xevQu4w",
+    authDomain: "nu61410198-project.firebaseapp.com",
+    databaseURL: "https://nu61410198-project.firebaseio.com",
+    projectId: "nu61410198-project",
+    storageBucket: "nu61410198-project.appspot.com",
+    messagingSenderId: "1086891836879"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+</script>
+</head>
+
+<body class="index">
+	<script type="text/javascript">
+		localStorage.clear();
+	</script>
+	<div class="container">
+		<div class="head">ยินดีต้อนรับสู่ระบบลงคะแนนโหวตแบบเสื้อฝ่ายสวัสดิการ</div>
+		<div class="sub-head">คณะศึกษาศาสตร์ มหาวิทยาลัยนเรศวร ปีการศึกษา 2562</div>
+		<div class="content">
+			<center>
+				<div class="alert green">กรุณากรอกข้อมูลเพื่อทำการเข้าสู่ระบบ<br><span>*ชื่อผู้ใช้งาน คือ รหัสประจำตัวนิสิต และ รหัสผ่าน คือ หมายเลขโทรศัพท์ที่ทำการลงทะเบียนไว้*</span></div>
+			</center>
+			<form action="" onSubmit="return myForm()" style="margin-top:30px;">
+				<input type="text" id="username" required placeholder="ชื่อผู้ใช้งาน" /><br>
+				<input type="text" id="password" required placeholder="รหัสผ่าน" style="margin-top:10px;" /><br><br>
+				<input type="submit" value="เข้าสู่ระบบ" />
+			</form>
+		</div>
+		<div class="footer">Powered by <a href="https://www.ktpstudioth.com">KTP Studio</a>.<br>©2019 by <a href="https://www.ikenzz.xyz">iKenzz</a>. All Rights Reserved.</div>
+	</div>
+	
+	<script type="text/javascript">
+		function myForm() {
+			var username = document.getElementById('username').value;
+			var password = document.getElementById('password').value;
+			var myRef = firebase.database().ref('2019/education/event/regis1/vote/'+username);
+			myRef.on('value', function (snap) {
+				var userChecker = snap.child('/id').val();
+				if (userChecker == username) {
+					var pwChecker = snap.child('/tel').val();
+					password = password.replace(/-/g,'');
+					pwChecker = pwChecker.replace(/-/g,'');
+					if (password == pwChecker) {
+						var sttChecker = snap.child('/stt').val();
+						if (sttChecker == "voted") {
+							alert("คุณได้ทำการลงคะแนนเรียบร้อยแล้ว");
+							window.location = 'index.html';
+						} else {
+							localStorage.setItem("checker","pass");
+							localStorage.setItem("username",username);
+							window.location = 'vote.html';
+						}
+					} else {
+						alert("รหัสผ่านไม่ถูกต้อง กรุณาเข้าสู่ระบบใหม่อีกครั้ง");
+						window.location = 'index.html';
+					}
+				} else {
+					alert("ไม่พบข้อมูลของท่านในระบบ กรุณาเข้าสู่ระบบใหม่อีกครั้ง หรือหากคิดว่านี่คือข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ");
+					window.location = 'index.html';
+				}
+				
+			});	
+			return false;
+		}
+	</script>
+	
+</body>
+</html>
