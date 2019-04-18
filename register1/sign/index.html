@@ -19,6 +19,7 @@
 <link rel="stylesheet" href="content/main.css" />
 <link href="https://fonts.googleapis.com/css?family=Prompt:400,400i,500,500i|Sarabun:400,400i,600,600i" rel="stylesheet">
 <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script type="text/javascript" src="content/main.js"></script>
 <script>
   // Initialize Firebase
   var config = {
@@ -111,71 +112,68 @@
 				var Estep2 = snap.child('/masterpassword').val();
 				if (Estep1 == Estep2) {
 					var Estep3 = prompt("กรุณาใส่วันที่ทำกิจกรรม (รูปแบบ DD FULLMONTH YYYY)");
-					var Estep4 = prompt("กรุณาใส่เวลาที่ทำกิจกรรม (เช่น เช้า, 05.00 น., 12.30 น. - 16.30 น.)");
-					var Estep5 = prompt("กรุณาใส่ชื่อกิจกรรม");
-					var Estep6 = prompt("กรุณาใส่รหัสกิจกรรม (รูปแบบ YYYYMMDD### โดย ### คือ ลำดับที่ของกิจกรรมในวันนั้น ๆ เริ่มที่ 001)");
-					var Estep7 = 0;
-					while (Estep7 != 1) {
-						var ref8 = firebase.database().ref('2019/education/event/regis1/sign/'+Estep6);
-						ref8.once('value', function (snap) {
-							var Estep8 = snap.child('/id').val();
-							if (Estep8 == null) {
-								Estep7 = 1;
-								loadJSON(function(response) {
-  									// Parse JSON string into object
-    								var jsonData = JSON.parse(response);
-									alert(jsonData);
- 								});
+					if (Estep3 != null) {
+						var Estep4 = prompt("กรุณาใส่เวลาที่ทำกิจกรรม (เช่น เช้า, 05.00 น., 12.30 น. - 16.30 น.)");
+						if (Estep4 != null) {
+							var Estep5 = prompt("กรุณาใส่ชื่อกิจกรรม");
+							if (Estep5 != null) {
+								var Estep6 = prompt("กรุณาใส่รหัสกิจกรรม (รูปแบบ YYYYMMDD### โดย ### คือ ลำดับที่ของกิจกรรมในวันนั้น ๆ เริ่มที่ 001)");
+								var Estep7 = 0;
+								while (Estep7 != 1) {
+									var ref8 = firebase.database().ref('2019/education/event/regis1/sign/'+Estep6);
+									ref8.once('value', function (snap) {
+										var Estep8 = snap.child('/id').val();
+										if (Estep8 == null) {
+											Estep7 = 1;
+										} else {
+											Estep6 = prompt("รหัสกิจกรรมนี้ถูกใช้งานแล้ว\nกรุณาใส่รหัสกิจกรรมใหม่อีกครั้ง (รูปแบบ YYYYMMDD### โดย ### คือ ลำดับที่ของกิจกรรมในวันนั้น ๆ เริ่มที่ 001)");
+										}
+									});	
+								}
+								if (confirm("คุณต้องการตั้งค่ารหัสผ่านเป็นรหัสผ่านเดียวกับ Master Password หรือไม่")) {
+									var Estep9 = Estep2;
+								} else {
+									var Estep9 = prompt("กรุณาตั้งรหัสผ่าน");
+								}
+								var nowDate = new Date();
+								firebase.database().ref('2019/education/event/regis1/sign/'+Estep6).set({
+									id: Estep6,
+									password: Estep9,
+									event: Estep5,
+									date: Estep3,
+									time: Estep4,
+									count: 0,
+									update: 0,
+									staff: memberDataJSON
+								}, function(error) {
+    								if (error) {
+										alert("errorDATABASE\nPlease try again.");
+    								} else {
+										firebase.database().ref('2019/education/event/regis1/sign/').update({
+											update: nowDate
+										});
+										firebase.database().ref('2019/education/event/regis1/sign/'+Estep6).update({
+											update: nowDate
+										});
+										alert("ทำการเพิ่มกิจกรรม "+Estep6+" เรียบร้อยแล้ว!");
+  									}
+								}
+								);
 							} else {
-								Estep6 = prompt("รหัสกิจกรรมนี้ถูกใช้งานแล้ว\nกรุณาใส่รหัสกิจกรรมใหม่อีกครั้ง (รูปแบบ YYYYMMDD### โดย ### คือ ลำดับที่ของกิจกรรมในวันนั้น ๆ เริ่มที่ 001)");
+								alert("การดำเนินการถูกยกเลิก\nuserInputBLANK");
 							}
-						});	
-					}
-					/*if (confirm("คุณต้องการตั้งค่ารหัสผ่านเป็นรหัสผ่านเดียวกับ Master Password หรือไม่")) {
-						var Estep9 = Estep2;
-					} else {
-						var Estep9 = prompt("กรุณาตั้งรหัสผ่าน");
-					}
-					var nowDate = new Date();
-					var jsonData = require('data.json');
-					firebase.database().ref('2019/education/event/regis1/sign/'+Estep6).set({
-							id: stuID,
-							password: name,
-							event: nickname,
-							date: major,
-							time: tel,
-							count: 0,
-							update: nowDate,
-							staff: JSON.parse(jsonData)
-						}, function(error) {
-    						if (error) {
-								alert("errorDATABASE\nPlease try again.");
-    						} else {
-								firebase.database().ref('2019/education/event/regis1/sign/').update({
-									update: nowDate
-								});
-								alert("ทำการเพิ่มกิจกรรม "+Estep6+" เรียบร้อยแล้ว!");
-  							}
+						} else {
+							alert("การดำเนินการถูกยกเลิก\nuserInputBLANK");
 						}
-					);*/
+					} else {
+						alert("การดำเนินการถูกยกเลิก\nuserInputBLANK");
+					}
 				} else {
 					alert("การดำเนินการถูกยกเลิก\nunknowMasterPASSWORD");
 				}
 			});
 			return false;
 		}
-		function loadJSON(callback) {   
-			var xobj = new XMLHttpRequest();
-        	xobj.overrideMimeType("application/json");
-    		xobj.open('GET', 'data.json', true); // Replace 'my_data' with the path to your file
-    		xobj.onreadystatechange = function () {
-          		if (xobj.readyState == 4 && xobj.status == "200") {
-					// Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
-            	callback(xobj.responseText);
-          		}
-    		};
-    		xobj.send(null);  
- 		}
 	</script>
 	
 </body>
