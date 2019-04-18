@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ฝ่ายสวัสดิการ ศึกษาศาสตร์ มหาวิทยาลัยนเรศวร 2562</title>
+<meta name="author" content="iKenzz">
+<meta name="description" content="ฝ่ายสวัสดิการ คณะศึกษาศาสตร์ มหาวิทยาลัยนเรศวร ปีการศึกษา 2562"/>
+<link rel="shortcut icon" type="content/image/x-icon" href="content/favicon.ico">
+<link rel="shortcut icon" type="content/image/png" href="content/favicon.png">
+<!-- Facebook -->
+<meta property="og:title" content="ฝ่ายสวัสดิการ ศึกษาศาสตร์ มหาวิทยาลัยนเรศวร 2562" />
+<meta property="og:url" content="https://sevendays2018.github.io/edu-nu-2019-event/" />
+<meta property="og:site_name" content="ฝ่ายสวัสดิการ ศึกษาศาสตร์ มหาวิทยาลัยนเรศวร 2562"/>
+<meta property="og:description" content="ฝ่ายสวัสดิการ คณะศึกษาศาสตร์ มหาวิทยาลัยนเรศวร ปีการศึกษา 2562" />
+<meta property="article:author" content="iKenzz" />
+<meta property="article:publisher" content="https://www.facebook.com/groups/227791388117273/" />
+<meta property="og:image" content="https://sevendays2018.github.io/edu-nu-2019-event/register1/content/og-image.jpg" />
+
+<link rel="stylesheet" href="content/main.css" />
+<link href="https://fonts.googleapis.com/css?family=Prompt:400,400i,500,500i|Sarabun:400,400i,600,600i" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC6x3egslw8y9UZVJS0gzfL7kP1xevQu4w",
+    authDomain: "nu61410198-project.firebaseapp.com",
+    databaseURL: "https://nu61410198-project.firebaseio.com",
+    projectId: "nu61410198-project",
+    storageBucket: "nu61410198-project.appspot.com",
+    messagingSenderId: "1086891836879"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+</script>
+</head>
+
+<body class="reportData">
+	<script type="text/javascript">
+		alert("ขออภัยในความไม่สะดวก\nกรุณารอสักครู่ หน้านี้อาจใช้เวลาเล็กน้อยในการเรียกใช้งานฐานข้อมูล");
+		if (localStorage.getItem("editRef") != null) {
+			window.location = "edit.html";
+		} else {
+			//do nothing
+		}
+	</script>
+	
+	<div class="reportData-background"></div>
+	<div class="reportData-content">
+		<div class="reportData-container">
+			<div class="head">ตรวจสอบรายชื่อผู้ปฏิบัติงานฝ่ายสวัสดิการ</div>
+			<div class="sub-head">คณะศึกษาศาสตร์ มหาวิทยาลัยนเรศวร ปีการศึกษา 2562</div>
+			<div class="content">
+				<center><div class="alert green">กรุณาเลือกกิจกรรมที่ต้องการตรวจสอบรายชื่อ<br><span>*หากต้องการตรวจสอบรายชื่อผู้มาปฏิบัติงาน กรุณากดที่ปุ่ม "ตรวจสอบ" ในรายการกิจกรรมที่ต้องการ*<br><span class="orange">**สำหรับผู้ดูแลระบบ หากต้องการแก้ไขรายชื่อ กรุณากดที่ปุ่ม "แก้ไข" **</span></span></div></center>
+
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  					<tbody id="textArea">
+          
+            					<script>		
+			        			var ref1 = firebase.database().ref('2019/education/event/regis1/sign/');
+			        			var ref2 = firebase.database().ref('2019/education/event/regis1/sign/update');
+							ref2.on('value', function (snap) {
+                						document.getElementById('textArea').innerHTML = "<tr><td class='tableHead' width='15%'>วันที่</td><td class='tableHead' width='10%'>เวลา</td><td class='tableHead' width='35%'>กิจกรรม</td><td class='tableHead' width='20%'>จำนวนผู้ปฏิบัติงาน</td><td class='tableHead' width='20%'>การดำเนินการ</td></tr>";
+                						ref1.orderByChild('id').on('child_added', function (snap) {
+											var refID = snap.child('/id').val();
+											var refPassword = snap.child('/password').val();
+                 							var refDate = snap.child('/date').val();
+                  							var refTime = snap.child('/time').val();
+                  							var refEvent = snap.child('/event').val();
+                  							var refCount = snap.child('/count').val();
+											if (refID != null) {
+                 								var showData = "<tr><td width='15%'>" + refDate + "</td><td width='10%'>" + refTime + "</td><td width='35%'>" + refEvent + "</td><td width='20%'>" + refCount + "</td><td width='20%'><button style='margin-top:20px; padding-top:2px; padding-bottom:2px; padding-left:7px; padding-right:7px;' onClick='redirCheck(\"" + refID + "\")'>ตรวจสอบ</button><br><button style='margin-top:10px; padding-top:2px; padding-bottom:2px; padding-left:7px; padding-right:7px;' onClick='redirEdit(\"" + refID + "\",\"" + refPassword + "\")'>แก้ไข</button></td></tr>";
+                    							document.getElementById('textArea').innerHTML += showData;
+											}
+                						});
+			        			});
+            					</script>
+            
+  					</tbody>
+				</table>
+			</div>
+			<div class="footer">Powered by <a href="https://www.ktpstudioth.com">KTP Studio</a>.<br>©2019 by <a href="https://www.ikenzz.xyz">iKenzz</a>. All Rights Reserved.</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		function redirCheck (URLref) {
+			localStorage.setItem("checkRef",URLref);
+			window.location = 'report.html';
+		}
+		function redirEdit (URLref,passwordCheck) {
+			var login = prompt("กรุณาใส่รหัสผ่านสำหรับการแก้ไขรายการ " +URLref, "");
+			if (login == passwordCheck) {
+				localStorage.setItem("editRef",URLref);
+				window.location = 'edit.html';
+			} else {
+				alert("รหัสผ่านไม่ถูกต้อง กรุณาทำรายการใหม่อีกครั้ง หรือ ติดต่อผู้ดูแลระบบ");
+			}
+		}
+	</script>
+	
+</body>
+</html>

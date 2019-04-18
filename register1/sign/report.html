@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ฝ่ายสวัสดิการ ศึกษาศาสตร์ มหาวิทยาลัยนเรศวร 2562</title>
+<meta name="author" content="iKenzz">
+<meta name="description" content="ฝ่ายสวัสดิการ คณะศึกษาศาสตร์ มหาวิทยาลัยนเรศวร ปีการศึกษา 2562"/>
+<link rel="shortcut icon" type="content/image/x-icon" href="content/favicon.ico">
+<link rel="shortcut icon" type="content/image/png" href="content/favicon.png">
+<!-- Facebook -->
+<meta property="og:title" content="ฝ่ายสวัสดิการ ศึกษาศาสตร์ มหาวิทยาลัยนเรศวร 2562" />
+<meta property="og:url" content="https://sevendays2018.github.io/edu-nu-2019-event/" />
+<meta property="og:site_name" content="ฝ่ายสวัสดิการ ศึกษาศาสตร์ มหาวิทยาลัยนเรศวร 2562"/>
+<meta property="og:description" content="ฝ่ายสวัสดิการ คณะศึกษาศาสตร์ มหาวิทยาลัยนเรศวร ปีการศึกษา 2562" />
+<meta property="article:author" content="iKenzz" />
+<meta property="article:publisher" content="https://www.facebook.com/groups/227791388117273/" />
+<meta property="og:image" content="https://sevendays2018.github.io/edu-nu-2019-event/register1/content/og-image.jpg" />
+	
+<link rel="stylesheet" href="content/main.css" />
+<link href="https://fonts.googleapis.com/css?family=Prompt:400,400i,500,500i|Sarabun:400,400i,600,600i" rel="stylesheet">
+<script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC6x3egslw8y9UZVJS0gzfL7kP1xevQu4w",
+    authDomain: "nu61410198-project.firebaseapp.com",
+    databaseURL: "https://nu61410198-project.firebaseio.com",
+    projectId: "nu61410198-project",
+    storageBucket: "nu61410198-project.appspot.com",
+    messagingSenderId: "1086891836879"
+  };
+  firebase.initializeApp(config);
+  var database = firebase.database();
+</script>
+</head>
+
+<body class="reportData">
+
+	<script type="text/javascript">
+		if (localStorage.getItem("checkRef") != null) {
+			var refCode = localStorage.getItem("checkRef");
+			localStorage.removeItem("checkRef");
+			alert("ขออภัยในความไม่สะดวก\nกรุณารอสักครู่ หน้านี้อาจใช้เวลาเล็กน้อยในการเรียกใช้งานฐานข้อมูล");
+		} else {
+			window.location = "index.html";
+		}
+	</script>
+	
+	<div class="reportData-background"></div>
+	<div class="reportData-content">
+		<div class="reportData-container">
+			<div class="head">ตรวจสอบรายชื่อผู้ปฏิบัติงานฝ่ายสวัสดิการ</div>
+			<div class="sub-head">คณะศึกษาศาสตร์ มหาวิทยาลัยนเรศวร ปีการศึกษา 2562</div>
+			<div class="content">
+				<center><div class="alert green" id="displayZone">
+					<script type="text/javascript">
+						var ref0 = firebase.database().ref('2019/education/event/regis1/sign/' + refCode + '/');
+						var displayDate = new Date();
+						ref0.on('value', function (snap) {
+							var displayUpdate = snap.child('update').val();
+							var displayEvent = snap.child('event').val();
+							var displayDate = snap.child('date').val();
+							var displayTime = snap.child('time').val();
+							document.getElementById("displayZone").innerHTML = "กิจกรรม "+displayEvent+"<br>วันที่ "+displayDate+"&emsp;เวลา "+displayTime+"<br><span>*อัปเดตข้อมูลล่าสุด "+displayUpdate+"*</span>";
+						});
+					</script></div></center>
+
+				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  					<tbody id="textArea">
+          
+            					<script>		
+			        			var ref1 = firebase.database().ref('2019/education/event/regis1/sign/' + refCode + '/staff' );
+			        			var ref2 = firebase.database().ref('2019/education/event/regis1/sign/' + refCode + '/update');
+							ref2.on('value', function (snap) {
+                						document.getElementById('textArea').innerHTML = "<tr><td class='tableHead' width='15%'>รหัสนิสิต</td><td class='tableHead' width='35%'>ชื่อ-สกุล</td><td class='tableHead' width='25%'>ชื่อเล่น</td><td class='tableHead' width='25%'>สถานะ</td></tr>";
+                						ref1.orderByChild('id').on('child_added', function (snap) {
+                 							var refID = snap.child('/id').val();
+                  							var refName = snap.child('/name').val();
+                  							var refNickname = snap.child('/nickname').val();
+                  							var refStatus = snap.child('/status').val();
+											if (refStatus == "เข้าร่วม") {
+												var addText = "<span class='green'>" + refStatus + "</span>";
+											} else {
+												var addText = "<span class='orange'>" + refStatus + "</span>";
+											}
+                 							if (refID != null) {
+                    								var showData = "<tr><td width='15%'>" + refID + "</td><td width='35%'>" + refName + "</td><td width='25%'>" + refNickname + "</td><td width='25%'>" + addText + "</td></tr>";
+                    								document.getElementById('textArea').innerHTML += showData;
+                  							}
+                						});
+			        			});
+            					</script>
+            
+  					</tbody>
+				</table>
+
+				<center>
+					<div class="alert orange">
+						หากไม่พบข้อมูลของคุณ<br>กรุณากรอกรหัสนิสิตและทำการตรวจสอบข้อมูลในระบบ<br>
+						<span>*หากต้องการแก้ไขข้อมูล กรุณาติดต่อผู้ดูแลระบบ*</span><br><br>
+						<form action="" onSubmit="return myForm()">
+							<input type="text" id="stuID" required placeholder="กรุณากรอกรหัสนิสิต" /><br><br>
+							<input type="submit" value="ตรวจสอบข้อมูล" />
+						</form>
+					</div>
+				</center>
+			</div>
+			<div class="footer">Powered by <a href="https://www.ktpstudioth.com">KTP Studio</a>.<br>©2019 by <a href="https://www.ikenzz.xyz">iKenzz</a>. All Rights Reserved.</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		function myForm() {
+			var stuID = document.getElementById('stuID').value;
+			var myRef = firebase.database().ref('2019/education/event/regis1/member/'+stuID);
+			myRef.on('value', function (snap) {
+				var checker = snap.child('/id').val();
+				if (checker == stuID) {
+					var activate = snap.child('/status').val();
+					if (activate == "registered") {
+						alert("คุณได้ทำการลงทะเบียนเรียบร้อยแล้ว");
+						window.location = 'index.html';
+					} else {
+						stuID = snap.child('/id').val();
+						var name = snap.child('/name').val();
+						var nickname = snap.child('/nickname').val();
+						var major = snap.child('/major').val();
+						var tel = snap.child('/tel').val();
+						localStorage.setItem("loginStep","check-pass");
+						localStorage.setItem("stuID",stuID);
+						localStorage.setItem("name",name);
+						localStorage.setItem("nickname",nickname);
+						localStorage.setItem("major",major);
+						localStorage.setItem("tel",tel);
+						window.location = 'check.html';
+					}
+				} else {
+					localStorage.setItem("loginStep","check-fail");
+					localStorage.setItem("stuID",stuID);
+					window.location = '../register.html';
+				}
+				
+			});	
+			return false;
+		}
+	</script>
+	
+</body>
+</html>
