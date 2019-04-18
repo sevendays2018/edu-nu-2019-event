@@ -61,13 +61,10 @@
 							var displayEvent = snap.child('event').val();
 							var displayDate = snap.child('date').val();
 							var displayTime = snap.child('time').val();
-							document.getElementById("displayZone").innerHTML = "กิจกรรม "+displayEvent+"<br>วันที่ "+displayDate+"&emsp;เวลา "+displayTime+"<br><span>*อัปเดตข้อมูลล่าสุด "+displayUpdate+"*</span>";
+							document.getElementById("displayZone").innerHTML = "กิจกรรม "+displayEvent+"<br>วันที่ "+displayDate+"&emsp;เวลา "+displayTime+"<br><span>*อัปเดตข้อมูลล่าสุด "+displayUpdate+"*</span><br><br><form action='' onSubmit='return backForm()'><input type='submit' value=''กลับหน้าหลัก'' /></form>";
 						});
-					</script><br><br>
-						<form action="" onSubmit="return backForm()">
-							<input type="submit" value="กลับหน้าหลัก" />
-						</form>
-					</div></center>
+					</script>
+				</div></center>
 
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
   					<tbody id="textArea">
