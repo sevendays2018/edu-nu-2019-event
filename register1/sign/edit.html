@@ -128,23 +128,43 @@
 		}
 		function setOut(ref) {
 			var nowDate = new Date();
-			firebase.database().ref('2019/education/event/regis1/sign/'+refCode+'/staff/'+ref).update({
-				status: "ไม่เข้าร่วม"
-			});
-			firebase.database().ref('2019/education/event/regis1/sign/'+refCode).update({
-			update: nowDate
-			});
-			firebase.database().ref('2019/education/event/regis1/sign/').update({
-			update: nowDate
-			});
-			var ref3 = firebase.database().ref('2019/education/event/regis1/sign/' + refCode);
-			ref3.once('value', function (snap) {
-				var counter = snap.child('/count').val();
-				counter=counter-1;
-				firebase.database().ref('2019/education/event/regis1/sign/'+refCode).update({
-					count: counter
+			if (confirm("กรุณาเลือกสถานะสำหรับการยกเลิก\n- กด OK เพื่อเปลี่ยนสถานะเป็น \"ไม่เข้าร่วม\"\n- กด Cancel เพื่อเปลี่ยนสถานะเป็น \"ไม่ได้รับมอบหมาย\"")) {
+  				firebase.database().ref('2019/education/event/regis1/sign/'+refCode+'/staff/'+ref).update({
+					status: "ไม่เข้าร่วม"
 				});
-			});
+				firebase.database().ref('2019/education/event/regis1/sign/'+refCode).update({
+					update: nowDate
+				});
+				firebase.database().ref('2019/education/event/regis1/sign/').update({
+					update: nowDate
+				});
+				var ref3 = firebase.database().ref('2019/education/event/regis1/sign/' + refCode);
+				ref3.once('value', function (snap) {
+					var counter = snap.child('/count').val();
+					counter=counter-1;
+					firebase.database().ref('2019/education/event/regis1/sign/'+refCode).update({
+						count: counter
+					});
+				});
+			} else {
+  				firebase.database().ref('2019/education/event/regis1/sign/'+refCode+'/staff/'+ref).update({
+					status: "ไม่ได้รับมอบหมาย"
+				});
+				firebase.database().ref('2019/education/event/regis1/sign/'+refCode).update({
+					update: nowDate
+				});
+				firebase.database().ref('2019/education/event/regis1/sign/').update({
+					update: nowDate
+				});
+				var ref3 = firebase.database().ref('2019/education/event/regis1/sign/' + refCode);
+				ref3.once('value', function (snap) {
+					var counter = snap.child('/count').val();
+					counter=counter-1;
+					firebase.database().ref('2019/education/event/regis1/sign/'+refCode).update({
+						count: counter
+					});
+				});
+			}
 		}
 		function myForm() {
 			localStorage.removeItem("editRef");

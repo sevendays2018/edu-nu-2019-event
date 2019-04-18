@@ -80,6 +80,8 @@
                   							var refStatus = snap.child('/status').val();
 											if (refStatus == "เข้าร่วม") {
 												var addText = "<span class='green'>" + refStatus + "</span>";
+											} else if (refStatus == "ไม่ได้รับมอบหมาย") {
+												var addText = "<span class='pink'>" + refStatus + "</span>";
 											} else {
 												var addText = "<span class='orange'>" + refStatus + "</span>";
 											}
