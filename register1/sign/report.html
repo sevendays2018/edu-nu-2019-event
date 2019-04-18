@@ -63,7 +63,11 @@
 							var displayTime = snap.child('time').val();
 							document.getElementById("displayZone").innerHTML = "กิจกรรม "+displayEvent+"<br>วันที่ "+displayDate+"&emsp;เวลา "+displayTime+"<br><span>*อัปเดตข้อมูลล่าสุด "+displayUpdate+"*</span>";
 						});
-					</script></div></center>
+					</script><br><br>
+						<form action="" onSubmit="return backForm()">
+							<input type="submit" value="กลับหน้าหลัก" />
+						</form>
+					</div></center>
 
 				<table width="100%" border="0" cellspacing="0" cellpadding="0">
   					<tbody id="textArea">
@@ -112,6 +116,10 @@
 	</div>
 	
 	<script type="text/javascript">
+		function backForm() {
+			window.location = "index.html";
+			return false;
+		}
 		function myForm() {
 			var stuID = document.getElementById('stuID').value;
 			var myRef = firebase.database().ref('2019/education/event/regis1/member/'+stuID);

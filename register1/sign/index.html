@@ -77,6 +77,14 @@
             
   					</tbody>
 				</table>
+				<center>
+					<div class="alert pink">
+						หากต้องการเพิ่มกิจกรรมอื่น ๆ กรุณาเข้าสู่ระบบ<br><br>
+						<form action="" onSubmit="return addEvent()">
+							<input type="submit" value="เพิ่มกิจกรรม" />
+						</form>
+					</div>
+				</center>
 			</div>
 			<div class="footer">Powered by <a href="https://www.ktpstudioth.com">KTP Studio</a>.<br>©2019 by <a href="https://www.ikenzz.xyz">iKenzz</a>. All Rights Reserved.</div>
 		</div>
@@ -95,6 +103,61 @@
 			} else {
 				alert("รหัสผ่านไม่ถูกต้อง กรุณาทำรายการใหม่อีกครั้ง หรือ ติดต่อผู้ดูแลระบบ");
 			}
+		}
+		function addEvent() {
+			var Estep1 = prompt("กรุณาใส่ Master Password สำหรับการจัดการระบบ");
+			var ref9 = firebase.database().ref('2019/education/event/regis1/sign');
+			ref9.once('value', function (snap) {
+				var Estep2 = snap.child('/masterpassword').val();
+				if (Estep1 == Estep2) {
+					var Estep3 = prompt("กรุณาใส่วันที่ทำกิจกรรม (รูปแบบ DD FULLMONTH YYYY)");
+					var Estep4 = prompt("กรุณาใส่เวลาที่ทำกิจกรรม (เช่น เช้า, 05.00 น., 12.30 น. - 16.30 น.)");
+					var Estep5 = prompt("กรุณาใส่ชื่อกิจกรรม");
+					var Estep6 = prompt("กรุณาใส่รหัสกิจกรรม (รูปแบบ YYYYMMDD### โดย ### คือ ลำดับที่ของกิจกรรมในวันนั้น ๆ เริ่มที่ 001)");
+					var Estep7 = 0;
+					while (Estep7 != 1) {
+						var ref8 = firebase.database().ref('2019/education/event/regis1/sign/'+Estep6);
+						ref8.once('value', function (snap) {
+							var Estep8 = snap.child('/id').val();
+							if (Estep8 == null) {
+								Estep7 = 1;
+							} else {
+								Estep6 = prompt("รหัสกิจกรรมนี้ถูกใช้งานแล้ว\nกรุณาใส่รหัสกิจกรรมใหม่อีกครั้ง (รูปแบบ YYYYMMDD### โดย ### คือ ลำดับที่ของกิจกรรมในวันนั้น ๆ เริ่มที่ 001)");
+							}
+						});	
+					}
+					alert(Estep6);
+					if (confirm("คุณต้องการตั้งค่ารหัสผ่านเป็นรหัสผ่านเดียวกับ Master Password หรือไม่")) {
+						var Estep9 = Estep2;
+					} else {
+						var Estep9 = prompt("กรุณาตั้งรหัสผ่าน");
+					}
+					var nowDate = new Date();
+					var jsonData = require('data.json');
+					firebase.database().ref('2019/education/event/regis1/sign/'+Estep6).set({
+							id: stuID,
+							password: name,
+							event: nickname,
+							date: major,
+							time: tel,
+							count: 0,
+							update: nowDate,
+							staff: JSON.parse(jsonData)
+						}, function(error) {
+    						if (error) {
+								alert("errorDATABASE\nPlease try again.");
+    						} else {
+								firebase.database().ref('2019/education/event/regis1/sign/').update({
+									update: nowDate
+								});
+								alert("ทำการเพิ่มกิจกรรม "+Estep6+" เรียบร้อยแล้ว!");
+  							}
+						}
+					);
+				} else {
+					alert("การดำเนินการถูกยกเลิก\nunknowMasterPASSWORD");
+				}
+			});
 		}
 	</script>
 	
