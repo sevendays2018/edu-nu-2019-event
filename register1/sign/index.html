@@ -123,7 +123,7 @@
 									var ref8 = firebase.database().ref('2019/education/event/regis1/sign/'+Estep6);
 									ref8.once('value', function (snap) {
 										var Estep8 = snap.child('/id').val();
-										if (Estep6 == null) {
+										if (Estep6 == null || Estep6 == "") {
 											Estep6 = prompt("ไม่สามารถตั้งรหัสกิจกรรมเป็น null ได้\nกรุณาใส่รหัสกิจกรรมใหม่อีกครั้ง (รูปแบบ YYYYMMDD### โดย ### คือ ลำดับที่ของกิจกรรมในวันนั้น ๆ เริ่มที่ 001)");
 										} else if (Estep8 == null) {
 											Estep7 = 1;
