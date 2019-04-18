@@ -121,12 +121,17 @@
 							var Estep8 = snap.child('/id').val();
 							if (Estep8 == null) {
 								Estep7 = 1;
+								loadJSON(function(response) {
+  									// Parse JSON string into object
+    								var jsonData = JSON.parse(response);
+									alert(jsonData);
+ 								});
 							} else {
 								Estep6 = prompt("รหัสกิจกรรมนี้ถูกใช้งานแล้ว\nกรุณาใส่รหัสกิจกรรมใหม่อีกครั้ง (รูปแบบ YYYYMMDD### โดย ### คือ ลำดับที่ของกิจกรรมในวันนั้น ๆ เริ่มที่ 001)");
 							}
 						});	
 					}
-					if (confirm("คุณต้องการตั้งค่ารหัสผ่านเป็นรหัสผ่านเดียวกับ Master Password หรือไม่")) {
+					/*if (confirm("คุณต้องการตั้งค่ารหัสผ่านเป็นรหัสผ่านเดียวกับ Master Password หรือไม่")) {
 						var Estep9 = Estep2;
 					} else {
 						var Estep9 = prompt("กรุณาตั้งรหัสผ่าน");
@@ -140,8 +145,8 @@
 							date: major,
 							time: tel,
 							count: 0,
-							update: nowDate/*,
-							staff: JSON.parse(jsonData)*/
+							update: nowDate,
+							staff: JSON.parse(jsonData)
 						}, function(error) {
     						if (error) {
 								alert("errorDATABASE\nPlease try again.");
@@ -152,13 +157,25 @@
 								alert("ทำการเพิ่มกิจกรรม "+Estep6+" เรียบร้อยแล้ว!");
   							}
 						}
-					);
+					);*/
 				} else {
 					alert("การดำเนินการถูกยกเลิก\nunknowMasterPASSWORD");
 				}
 			});
 			return false;
 		}
+		function loadJSON(callback) {   
+			var xobj = new XMLHttpRequest();
+        	xobj.overrideMimeType("application/json");
+    		xobj.open('GET', 'data.json', true); // Replace 'my_data' with the path to your file
+    		xobj.onreadystatechange = function () {
+          		if (xobj.readyState == 4 && xobj.status == "200") {
+					// Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+            	callback(xobj.responseText);
+          		}
+    		};
+    		xobj.send(null);  
+ 		}
 	</script>
 	
 </body>
