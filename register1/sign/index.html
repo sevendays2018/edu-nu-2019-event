@@ -126,7 +126,6 @@
 							}
 						});	
 					}
-					alert(Estep6);
 					if (confirm("คุณต้องการตั้งค่ารหัสผ่านเป็นรหัสผ่านเดียวกับ Master Password หรือไม่")) {
 						var Estep9 = Estep2;
 					} else {
@@ -141,8 +140,8 @@
 							date: major,
 							time: tel,
 							count: 0,
-							update: nowDate,
-							staff: JSON.parse(jsonData)
+							update: nowDate/*,
+							staff: JSON.parse(jsonData)*/
 						}, function(error) {
     						if (error) {
 								alert("errorDATABASE\nPlease try again.");
