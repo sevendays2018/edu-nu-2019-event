@@ -1,1 +1,47 @@
 #REFERENCES
+https://stackoverflow.com/questions/36138404/store-data-in-firebase-as-json-object
+http://tools.knowledgewalls.com/onlinemultilinetosinglelineconverter
+https://www.w3schools.com/js/js_loop_while.asp
+https://www.tutorialspoint.com/How-to-change-button-label-in-confirm-box-using-JavaScript
+https://www.w3schools.com/js/js_popup.asp
+https://www.w3schools.com/js/tryit.asp?filename=tryjs_prompt
+https://www.w3schools.com/js/js_popup.asp
+https://www.w3schools.com/jsref/met_storage_removeitem.asp
+
+#NOT USE
+https://codepen.io/KryptoniteDove/post/load-json-file-locally-using-pure-javascript
+https://www.w3schools.com/js/tryit.asp?filename=tryjson_parse
+https://www.w3schools.com/js/js_json_parse.asp
+https://www.quora.com/How-can-I-load-data-from-a-JSON-file-into-a-variable-in-JavaScript-without-using-Ajax
+https://stackoverflow.com/questions/14484613/load-local-json-file-into-variable
+https://www.sitepoint.com/get-url-parameters-with-javascript/
+https://www.firebase.com/docs/android/api/#firebase_goOffline
+
+#FUTURE USE
+https://serratus.github.io/quaggaJS/examples/file_input.html
+https://github.com/mubaidr/Javascript-Barcode-Reader
+https://github.com/serratus/quaggaJS/issues/116
+https://github.com/LazarSoft/jsqrcode
+https://stackoverflow.com/questions/17738395/barcode-scanner-for-mobile-phone-for-website-in-form
+https://stackoverflow.com/questions/17738395/barcode-scanner-for-mobile-phone-for-website-in-form
+https://lindell.me/JsBarcode/
+
+
+#BARCODE + NAMETAG GENERATOR
+http://www.barcodez.net/index.php
+https://support.office.com/en-us/article/replace-a-formula-with-its-result-38001951-c0e8-4fbd-9048-37ef81e2891e
+https://superuser.com/questions/482450/labels-mail-merge-repeats-on-subsequent-pages
+https://trumpexcel.com/insert-picture-into-excel-cell/
+https://support.office.com/en-gb/article/change-the-column-width-and-row-height-72f5e3cc-994d-43e8-ae58-9774a0905f46
+https://www.extendoffice.com/documents/excel/1156-excel-insert-multiple-pictures.html
+https://www.ablebits.com/office-addins-blog/2015/07/15/excel-concatenate-strings-cells-columns/
+https://www.mrexcel.com/forum/excel-questions/58519-how-calculate-check-digit-mod-10-a.html
+https://support.office.com/th-th/article/%E0%B8%AA%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%87%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%88%E0%B8%B1%E0%B8%94%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%95%E0%B8%B2%E0%B8%A3%E0%B8%B2%E0%B8%87-e81aa349-b006-4f8a-9806-5af9df0ac664
+https://www.got-it.ai/solutions/excel-chat/excel-tutorial/text/remove-text-by-position
+https://www.extendoffice.com/documents/excel/1656-excel-extract-first-character.html
+https://www2.thaiadmin.org/board/index.php?topic=30597.0
+https://www.barcodefaq.com/1d/isbn/
+// NOT USE
+https://support.office.com/en-ie/article/getting-started-with-power-query-7104fbee-9e62-4cb9-a02e-5bfb1a6c536a
+https://support.office.com/en-ie/article/split-a-column-of-text-power-query-5282d425-6dd0-46ca-95bf-8e0da9539662
+https://barcode.tec-it.com/en/Code128?data=EDU62WF05614100137%0AEDU62WF06614101432%0AEDU62WF07614101504%0AEDU62WF04614101678%0AEDU62WF01614101989%0AEDU62WF08614102046%0AEDU62WF09614102118%0AEDU62WF10614102976%0AEDU62WF11614103039%0AEDU62WF12614103273%0AEDU62WF13614104577%0AEDU62WF14614104957%0AEDU62WF03614105704%0AEDU62WF15614106179%0AEDU62WF16614106486%0AEDU62WF17614106622%0AEDU62WF18614106865%0AEDU62WF19614107099%0AEDU62WF20614107478%0AEDU62WF21614107858%0AEDU62WF22614108772%0AEDU62WF23614108844%0AEDU62WF24614109142%0AEDU62WF25614109693%0AEDU62WF26614110728%0AEDU62WF27614112874%0AEDU62WF28614112946%0AEDU62WF29614113171%0AEDU62WF30614113931%0AEDU62WF31614114092%0AEDU62WF32614114164%0AEDU62WF33614114309%0AEDU62WF34614114616%0AEDU62WF02614115393%0AEDU62WF35614115539%0AEDU62WF36614116526%0AEDU62WF37614118437%0AEDU62WF38614118744%0AEDU62WF39614119042%0AEDU62WF40614119113%0AEDU62WF41614119429%0AEDU62WF42614121477%0AEDU62WF43614121549%0AEDU62WF44614121612%0AEDU62WF45614121855%0AEDU62WF46614122778%0AEDU62WF47614125052%0AEDU62WF48614125295%0AEDU62WF49614125675%0AEDU62WF50614127341%0AEDU62WF51614127892%0AEDU62WF52614128336%0AEDU62WF53614128716%0AEDU62WF54614129322%0AEDU62WF55614130382%0AEDU62WF56614131134%0AEDU62WF57614131441%0AEDU62WF58614132291%0AEDU62WF59614132988%0AEDU62WF60614133803%0AEDU62WF61614133973%0AEDU62WF62614135024%0AEDU62WF63614136255%0AEDU62WF64614136943%0AEDU62WF65614137622%0AEDU62WF66614139396%0AEDU62WF67614139776%0AEDU62WF68614141345%0AEDU62WF69614142649
