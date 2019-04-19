@@ -118,7 +118,7 @@
 			return false;
 		}
 		function myForm() {
-			var stuID = document.getElementById('stuID').value;
+			/*var stuID = document.getElementById('stuID').value;
 			var myRef = firebase.database().ref('2019/education/event/regis1/member/'+stuID);
 			myRef.on('value', function (snap) {
 				var checker = snap.child('/id').val();
@@ -147,7 +147,8 @@
 					window.location = '../register.html';
 				}
 				
-			});	
+			});*/
+			alert("ขออภัย ไม่สามารถดำเนินการตามคำขอของท่านได้ เนื่องจากเกินระยะเวลาการทำรายการ\nerrorTimeOut\nหากคิดว่านี่คือข้อผิดพลาด กรุณาติดต่อผู้ดูแลระบบ");
 			return false;
 		}
 	</script>
